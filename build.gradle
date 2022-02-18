@@ -96,6 +96,3 @@ gradle.taskGraph.afterTask {Task task ->
 }
 
 defaultTasks "fourth"
-
-
-

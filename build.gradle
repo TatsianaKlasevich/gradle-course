@@ -3,9 +3,18 @@ plugins {
 }
 
 apply from: 'script.gradle'
-apply plugin: CustomPlugin
-//apply plugin: 'custom'
-apply plugin: 'java'
+
+repositories {
+    //~/.gradle/caches --offline
+    // ~/m2/repository
+//    mavenLocal()
+//    maven {
+//        name "nexus klass"
+//        uri "https://nexus.klass/repository"
+//    }
+    mavenCentral()
+//    flatDir {}
+}
 
 sourceSets {
     main {

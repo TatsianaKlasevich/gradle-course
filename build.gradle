@@ -5,20 +5,7 @@
  * Learn more about Gradle by exploring our samples at https://docs.gradle.org/7.4/samples
  */
 
-println "configuration phase"
-println "gradle id: ${gradle.hashCode()}"
-println "root: ${rootProject.hashCode()}, ${project.hashCode()}, ${gradle.rootProject.hashCode()}"
 
-
-//3
-//task=new DefaultTask
-//def map = [description: "hello task", group: "dmdev"]
-//task(map, "hello"){
-//
-//}
-
-//Project -> [Task1, Task2]
-//Task -> [Action1,Action2] -> action.execute(execution phase)
 task hello(description: "Hello task", group: "dmdev", type: DefaultTask) {
     println "configuration phase. Task hello"
 
@@ -40,20 +27,39 @@ task hello(description: "Hello task", group: "dmdev", type: DefaultTask) {
     println "path task: $path"
   }
 
-//gradle.taskGraph.allTasks
+task first{
+    doLast {
+        println "Task 1"
+    }
+}
+task second{
+    doLast {
+        println "Task 2"
+    }
+}
+task third{
+    doLast {
+        println "Task 3"
+    }
+}
+task fourth{
+    doLast {
+        println "Task 4"
+    }
+}
 
-//hello.doFirst {}
+//2 <--4
 
-//tasks.findByName("hello")
-//1
-//hello.description = "Hello task"
-//hello.group = "klasevich"
+fourth.dependsOn second
+second.dependsOn first
+second.finalizedBy third
 
-//2
-//hello.configure Closure
-//hello{
-//    println "configuration phase. Task hello"
-//    description= "Hello task"
-//    group = "klasevich"
-//}
+gradle.taskGraph.whenReady { TaskExecutionGraph graph ->
+        println " ---- Graph"
+    graph.allTasks.each{
+        println "${it.name}"
+    }
+}
+
+
 

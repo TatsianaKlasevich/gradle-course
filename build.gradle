@@ -41,14 +41,25 @@ configurations.runtimeClasspath.files.each {
 }
 
 jar{
-    manifest{
-        attributes'Main-Class':'com.klasevich.HelloWorld'
+    def jars = configurations.runtimeClasspath.files.collect{
+        "lib/$it.name"
     }
-    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
-    from (configurations.runtimeClasspath.files.collect{
-        zipTree(it)
-    })
+    manifest{
+        attributes'Main-Class':'com.klasevich.HelloWorld',
+                  'Class-Path':jars.join(' ')
+    }
+//    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+//    from (configurations.runtimeClasspath.files.collect{
+//        zipTree(it)
+//    })
 }
+
+task copyAllDependencies(type: Copy){
+    from(configurations.runtimeClasspath.files)
+    into("$buildDir/libs/lib")
+}
+
+jar.dependsOn copyAllDependencies
 
 sourceSets {
     main {

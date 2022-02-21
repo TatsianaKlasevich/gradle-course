@@ -8,10 +8,19 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+  Configuration configurationImpl = getByName("implementation")
+    klass{
+        description = "class configuration"
+    }
+    configurationImpl.extendsFrom(klass)
+}
+
 dependencies {
 //    add('implementation', [group: "org.springframework", name: "spring-webmvc", version: '5.3.9'])
 //    add('implementation', "org.springframework:spring-webmvc:5.3.9")
-    implementation "org.springframework:spring-webmvc:5.3.9"
+//    implementation "org.springframework:spring-webmvc:5.3.9"
+    klass "org.springframework:spring-webmvc:5.3.9"
 }
 
 sourceSets {

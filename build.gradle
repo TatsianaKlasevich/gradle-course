@@ -1,11 +1,16 @@
 plugins {
     id 'java'
+    id 'war'
 }
 
 apply from: 'script.gradle'
 
 repositories {
     mavenCentral()
+}
+java{
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 configurations {
@@ -23,7 +28,9 @@ configurations {
 }
 
 dependencies {
-    compileOnly platform('org.springframework.boot:spring-boot-dependencies:2.5.3')
+
+    compileOnly 'jakarta.servlet:jakarta.servlet-api:5.0.0'
+//    compileOnly platform('org.springframework.boot:spring-boot-dependencies:2.5.3')
 
 //    add('implementation', [group: "org.springframework", name: "spring-webmvc", version: '5.3.9'])
 //    add('implementation', "org.springframework:spring-webmvc:5.3.9")

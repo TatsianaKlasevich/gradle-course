@@ -1,7 +1,10 @@
 plugins {
     id 'java-library'
     id 'jacoco'
+    id 'custom-klass'
 }
+
+//apply plugin: com.klasevich.plugin.CustomPlugin
 
 repositories {
     mavenCentral()

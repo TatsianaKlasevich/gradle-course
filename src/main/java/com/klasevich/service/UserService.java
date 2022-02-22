@@ -9,7 +9,7 @@ public class UserService {
 
     private final UserDao userDao = new UserDao();
 
-    public List<User> getAll(){
+    public List<User> getAll() {
         return userDao.findAll();
     }
 }

@@ -18,8 +18,8 @@ public class UserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
-        PrintWriter writer =resp.getWriter();
-        userService. getAll().forEach(user ->writer.write("""
+        PrintWriter writer = resp.getWriter();
+        userService.getAll().forEach(user -> writer.write("""
                 <h1>%d: %s</h1>
                 """.formatted(user.id(), user.name())));
     }

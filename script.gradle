@@ -1,6 +1,6 @@
 import java.time.LocalDate
 
-ext{
+ext {
     javaVersion = 11
     currentDate = LocalDate.now()
 }
@@ -16,23 +16,22 @@ println "---- System: "
 println System.getProperty("sys.example")
 
 
-
-task first{
+task first {
     doLast {
         println "Task 1"
     }
 }
-task second{
+task second {
     doLast {
         println "Task 2"
     }
 }
-task third{
+task third {
     doLast {
         println "Task 3"
     }
 }
-task fourth(group: "klass"){
+task fourth(group: "klass") {
     doLast {
         println "Task 4"
     }
@@ -53,19 +52,19 @@ first.mustRunAfter second
 
 gradle.taskGraph.whenReady { TaskExecutionGraph graph ->
     println " ---- Graph"
-    graph.allTasks.each{
+    graph.allTasks.each {
         println "${it.name}"
     }
 }
 
-gradle.taskGraph.beforeTask {Task task ->
-    if(task.group == "klass") {
+gradle.taskGraph.beforeTask { Task task ->
+    if (task.group == "klass") {
         println "beforeTask callBack $task"
     }
 }
 
-gradle.taskGraph.afterTask {Task task ->
-    if(task.name == 'first')
+gradle.taskGraph.afterTask { Task task ->
+    if (task.name == 'first')
         println "afterTask callBack $task"
 }
 

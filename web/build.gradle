@@ -9,7 +9,7 @@ repositories {
 
 dependencies {
     implementation project(":service")
-    implementation("common:util")
+    implementation project(":common:util")
     compileOnly 'jakarta.servlet:jakarta.servlet-api:5.0.0'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
@@ -20,7 +20,7 @@ test {
     useJUnitPlatform()
 }
 
-war{
+war {
     archiveName "klass.war"
 }
 

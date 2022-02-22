@@ -1,9 +1,43 @@
+import org.apache.commons.lang3.StringUtils
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+        classpath 'org.apache.commons:commons-lang3:3.12.0'
+
+    }
+}
+
 plugins {
     id 'java'
     id 'war'
 }
 
 apply from: 'script.gradle'
+
+allprojects {
+    group StringUtils.capitalize("klasevich")
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+subprojects { //better don't use
+}
+
+project(":database") {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+
+    }
+}
 
 repositories {
     mavenCentral()
@@ -71,7 +105,6 @@ jar.dependsOn copyAllDependencies
 war {
     archiveName "klass.war"
 }
-
 
 
 sourceSets {

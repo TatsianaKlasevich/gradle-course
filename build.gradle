@@ -72,13 +72,7 @@ war {
     archiveName "klass.war"
 }
 
-task deployTomcat(type: Copy) {
-    from(war.archiveFile.get())
-    into("/Users/USER/apache-tomcat-9.0.41/webapps")
-}
 
-deployTomcat.dependsOn war
-assemble.dependsOn war
 
 sourceSets {
     main {

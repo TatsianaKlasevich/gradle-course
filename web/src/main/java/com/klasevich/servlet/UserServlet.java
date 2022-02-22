@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -21,6 +22,6 @@ public class UserServlet extends HttpServlet {
         PrintWriter writer = resp.getWriter();
         userService.getAll().forEach(user -> writer.write("""
                 <h1>%d: %s</h1>
-                """.formatted(user.id(), user.name())));
+                """.formatted(user.id(), StringUtils.trim(user.name()))));
     }
 }

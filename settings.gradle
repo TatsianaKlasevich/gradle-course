@@ -1,6 +1,6 @@
 rootProject.name = 'gradle-starter'
 
-include 'Database'
+include 'database'
 include 'service'
 include 'web'
 include 'web'

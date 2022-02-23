@@ -39,6 +39,10 @@ project(":database") {
     }
 }
 
+wrapper{
+    gradleVersion "7.0.2"
+}
+
 repositories {
     mavenCentral()
 }
